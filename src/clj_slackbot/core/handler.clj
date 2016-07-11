@@ -52,6 +52,7 @@
   (if (:status r)
     (str "```"
          ";; " user "\n"
+         (:input r) "\n"
          "=> " (:form r) "\n"
          (when-let [o (:output r)]
            o)
