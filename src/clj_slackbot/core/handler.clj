@@ -24,12 +24,12 @@
 
 (defn post-to-slack
   ([s channel]
-     (let [p (if channel {:channel channel} {})]
-       (client/post post-url
-                   {:content-type :json
-                    :form-params (assoc p :text s)})))
+   (let [p (if channel {:channel channel} {})]
+     (client/post post-url
+                  {:content-type :json
+                   :form-params (assoc p :text s)})))
   ([s]
-     (post-to-slack s nil)))
+   (post-to-slack s nil)))
 
 (defn eval-expr
   "Evaluate the given string"
