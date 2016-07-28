@@ -2,7 +2,7 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [clojail.core :refer [sandbox]]
-            [clojail.testers :refer [secure-tester-without-def blanket]]
+            [clojail.testers :refer [secure-tester-without-def blacklist-objects blacklist-packages blacklist-symbols blacklist-nses blanket]]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [environ.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]]
@@ -11,8 +11,29 @@
            java.util.concurrent.TimeoutException)
   (:gen-class))
 
+(def insecure-tester
+  [(blacklist-objects [])
+                      ;  clojure.lang.Compiler clojure.lang.Ref clojure.lang.Reflector
+                      ;  clojure.lang.Namespace clojure.lang.Var clojure.lang.RT
+                      ;  java.io.ObjectInputStream
+   (blacklist-packages [])
+                        ; "java.lang.reflect"
+                        ; "java.security"
+                        ; "java.util.concurrent"
+                        ; "java.awt"
+   (blacklist-symbols
+    '#{})
+      ;  alter-var-root intern eval catch
+      ;  load-string load-reader addMethod ns-resolve resolve find-var
+      ;  *read-eval* ns-publics ns-unmap set! ns-map ns-interns the-ns
+      ;  push-thread-bindings pop-thread-bindings future-call agent send
+      ;  send-off pmap pcalls pvals in-ns System/out System/in System/err
+      ;  with-redefs-fn Class/forName
+   (blacklist-nses '[clojure.main])
+   (blanket "clojail")])
+
 (def clj-slackbot-tester
-  (conj secure-tester-without-def (blanket "clj-slackbot" "compojure" "ring")))
+  (conj insecure-tester (blanket "clj-slackbot" "compojure" "ring")))
 
 (def sb (sandbox clj-slackbot-tester))
 
