@@ -3,6 +3,11 @@
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/algo.monads "0.1.6"]
+                 [org.clojure/data.json "0.2.6"]
+                 [org.clojure/math.numeric-tower "0.0.4"]
+                 [org.clojure/test.check "0.9.0"]
+                 [com.cemerick/pomegranate "0.3.1"]
                  [compojure "1.4.0"]
                  [clojail "1.0.6"]
                  [clj-http "2.0.1"]
