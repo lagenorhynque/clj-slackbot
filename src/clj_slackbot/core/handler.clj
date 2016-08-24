@@ -6,7 +6,12 @@
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [environ.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]]
-            [clj-http.client :as client])
+            [clj-http.client :as client]
+            [clojure.algo.monads]
+            [clojure.data.json]
+            [clojure.math.numeric-tower]
+            [clojure.test.check]
+            [cemerick.pomegranate])
   (:import java.io.StringWriter
            java.util.concurrent.TimeoutException)
   (:gen-class))
