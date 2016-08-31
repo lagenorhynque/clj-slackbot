@@ -8,6 +8,7 @@
             [ring.adapter.jetty :refer [run-jetty]]
             [clj-http.client :as client]
             [clojure.algo.monads]
+            [clojure.core.async]
             [clojure.data.json]
             [clojure.math.numeric-tower]
             [clojure.test.check]
