@@ -112,6 +112,7 @@
        :headers {"Content-Type" "text/plain"}})))
 
 (defroutes approutes
+  (GET "/" [] "A Clojure bot for Slack")
   (POST "/clj" req (handle-clj (:params req)))
   (route/not-found "Not Found"))
 
