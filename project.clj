@@ -4,7 +4,7 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/algo.monads "0.1.6"]
-                 [org.clojure/core.async "0.2.385"]
+                 [org.clojure/core.async "0.3.442"]
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/test.check "0.9.0"]
@@ -15,7 +15,9 @@
                  [cheshire "5.5.0"]
                  [environ "1.0.2"]
                  [ring/ring-jetty-adapter "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]]
+                 [ring/ring-defaults "0.1.5"]
+                 [funcool/cats "2.1.0"]
+                 [prismatic/schema "1.1.6"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler clj-slackbot.core.handler/app}
   :uberjar-name "clj-slackbot.jar"

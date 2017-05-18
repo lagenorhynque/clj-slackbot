@@ -12,7 +12,9 @@
             [clojure.data.json]
             [clojure.math.numeric-tower]
             [clojure.test.check]
-            [cemerick.pomegranate])
+            [cemerick.pomegranate]
+            [cats.core]
+            [schema.core])
   (:import java.io.StringWriter
            java.util.concurrent.TimeoutException)
   (:gen-class))
