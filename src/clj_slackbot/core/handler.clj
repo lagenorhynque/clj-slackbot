@@ -9,6 +9,7 @@
             [clj-http.client :as client]
             [clojure.algo.monads]
             [clojure.core.async]
+            [clojure.core.match]
             [clojure.data.json]
             [clojure.math.numeric-tower]
             [clojure.test.check]
